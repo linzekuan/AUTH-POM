@@ -15,6 +15,7 @@
         <module>adapter</module>
         <module>app/core/model</module>
         <module>app/common/util</module>
+        <module>security</module>
     </modules>
 
     <parent>

@@ -4,7 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author lambert
@@ -17,4 +20,10 @@ public class LoginController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void login(HttpServletRequest request, HttpServletResponse response){
+        System.err.println("111111");
+    }
+
 }

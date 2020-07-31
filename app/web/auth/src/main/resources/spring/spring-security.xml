@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="securityResourceWhiteListConfigurer" class="com.lambert.sso.security.configurer.SecurityResourceWhiteListConfigurer">
+        <property name="excludeList">
+            <list>
+                <value>/login</value>
+                <value>/assets/**</value>
+                <value>/rpc/**</value>
+                <value>/generateRSAKey.json</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="tokenStore" class="com.lambert.sso.security.auth.store.InMemoryTokenStore"/>
+
+    <bean id="tokenService" class="com.lambert.sso.security.auth.DefaultTokenService">
+        <property name="tokenStore" ref="tokenStore"/>
+    </bean>
+
+    <bean id = "securityContextConfigurer" class="com.lambert.sso.security.configurer.SecurityContextConfigurer">
+        <property name="securityResourceWhiteListConfigurer" ref="securityResourceWhiteListConfigurer"/>
+        <property name="tokenService" ref="tokenService"/>
+    </bean>
+
+</beans>

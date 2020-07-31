@@ -80,9 +80,13 @@ public class WebConfigurer implements WebMvcConfigurer {
 
         LOG.info("ADD RESOURCE START");
         if(StringUtils.isNotBlank(WebProperty.ASSETS_RESOURCE)){
-            LOG.info("ADD RESOURCE : "+WebProperty.ASSETS_RESOURCE);
+            String url = WebProperty.ASSETS_RESOURCE;
+            if(isWindows()){
+                url = "/"+url;
+            }
+            LOG.info("ADD RESOURCE : "+url);
             registry.addResourceHandler("/**").addResourceLocations(
-                    "file://"+WebProperty.ASSETS_RESOURCE);
+                    "file://"+url);
         }
         LOG.info("ADD RESOURCE END");
     }
@@ -108,6 +112,10 @@ public class WebConfigurer implements WebMvcConfigurer {
         return converter;
     }
 
+    public boolean isWindows() {
 
+        return System.getProperties().getProperty("os.name").toUpperCase().indexOf("WINDOWS") != -1;
+
+    }
 
 }

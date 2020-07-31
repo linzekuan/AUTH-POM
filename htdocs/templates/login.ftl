@@ -16,9 +16,6 @@
                     <h3>统一登录</h3>
                     <form action='login' method = "post" id="login_form">
 
-                        <input name="backUrl" type="hidden" value="${RequestParameters['backUrl']}" />
-                        <input name="appCode" type="hidden" value="${RequestParameters['appCode']}" />
-
                         <input id="encrypedPwd" name="password" type="hidden" />
 
                         <label for="name">账户名</label>
@@ -54,24 +51,7 @@
 
 
                $("#btn-login").click(function(){
-                   var uName = $("#name").val(); //获取用户名
-                   var pWord = $("#pwd").val(); //获取账号
-                   // 获取
-                   $.ajax({
-                       type:"post",
-                       url:"generateRSAKey.json?username="+uName,
-                       success:function(data){
-                           var exponent = data.exponent;
-                           var modulus = data.modulus;
-                           console.log(exponent,modulus);
-                           var pwdKey = new RSAUtils.getKeyPair(exponent,"",modulus);
-                           var reversedPwd = pWord.split("").reverse().join("");
-                           var encrypedPwd = RSAUtils.encryptedString(pwdKey,reversedPwd);
-                            $("#encrypedPwd").val(encrypedPwd)
-                            $("#login_form").submit();
-
-                       }
-                   })
+                  $("#login_form").submit();
                    return;
                })
            })
