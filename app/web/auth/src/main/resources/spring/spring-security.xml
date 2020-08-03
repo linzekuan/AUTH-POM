@@ -17,7 +17,7 @@
 
     <bean id="tokenStore" class="com.lambert.sso.security.auth.store.InMemoryTokenStore"/>
 
-    <bean id="tokenService" class="com.lambert.sso.security.auth.DefaultTokenService">
+    <bean id="accessTokenService" class="com.lambert.sso.security.auth.DefaultAccessTokenService">
         <property name="tokenStore" ref="tokenStore"/>
     </bean>
 

@@ -1,7 +1,6 @@
 package com.lambert.sso.security.configurer;
 
 import com.lambert.sso.security.SecurityAuthenticationAccessFilter;
-import com.lambert.sso.security.auth.TokenService;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 

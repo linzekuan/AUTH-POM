@@ -1,6 +1,6 @@
 package com.lambert.sso.security.configurer;
 
-import com.lambert.sso.security.auth.TokenService;
+import com.lambert.sso.security.auth.AccessTokenService;
 
 /**
  * @author lambert
@@ -10,7 +10,7 @@ public class SecurityContextConfigurer {
 
     private SecurityResourceWhiteListConfigurer securityResourceWhiteListConfigurer;
 
-    private TokenService tokenService;
+    private AccessTokenService tokenService;
 
     public SecurityResourceWhiteListConfigurer getSecurityResourceWhiteListConfigurer() {
         return securityResourceWhiteListConfigurer;
@@ -20,11 +20,11 @@ public class SecurityContextConfigurer {
         this.securityResourceWhiteListConfigurer = securityResourceWhiteListConfigurer;
     }
 
-    public TokenService getTokenService() {
+    public AccessTokenService getTokenService() {
         return tokenService;
     }
 
-    public void setTokenService(TokenService tokenService) {
+    public void setTokenService(AccessTokenService tokenService) {
         this.tokenService = tokenService;
     }
 }

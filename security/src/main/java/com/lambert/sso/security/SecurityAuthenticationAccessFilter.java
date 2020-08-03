@@ -29,6 +29,8 @@ public class SecurityAuthenticationAccessFilter extends AbstractSecurityFilter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
        if(SecurityResourceWhiteHandler.Handler(request,securityContextConfigurer.getSecurityResourceWhiteListConfigurer())){
            filterChain.doFilter(servletRequest,servletResponse);
+       }else if(SecurityCheckLoginHandler.handler(request,response,securityContextConfigurer)){
+           filterChain.doFilter(servletRequest,servletResponse);
        }else{
            SecurityRedirectLoginHandler.handler(request,response);
        }
